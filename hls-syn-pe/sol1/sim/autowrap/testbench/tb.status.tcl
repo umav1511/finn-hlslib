@@ -1,0 +1,1 @@
+set ::AESL_AUTOSIM::gTopFileName /home/uma/Desktop/graduation_project/finn_hlslib/finn-hlslib/hls-syn-pe/sol1/./sim/autowrap/testbench/pe_top.cpp_pre.cpp.tb.cpp

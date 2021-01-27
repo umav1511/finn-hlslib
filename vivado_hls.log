@@ -1,0 +1,117 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2020.1 (64-bit)
+  **** SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+  **** IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source /home/uma/Desktop/Xilinx/Vivado/2020.1/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/home/uma/Desktop/Xilinx/Vivado/2020.1/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'uma' on host 'uma-Lenovo-IdeaPad-S340-14IWL' (Linux_x86_64 version 5.4.0-60-generic) on Thu Jan 21 11:52:33 CET 2021
+INFO: [HLS 200-10] On os Ubuntu 18.04.5 LTS
+INFO: [HLS 200-10] In directory '/home/uma/Desktop/graduation_project/finn_hlslib/finn-hlslib'
+Sourcing Tcl script 'test_pe.tcl'
+INFO: [HLS 200-10] Opening project '/home/uma/Desktop/graduation_project/finn_hlslib/finn-hlslib/hls-syn-pe'.
+INFO: [HLS 200-10] Adding design file 'pe_top.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'pe_tb.cpp' to the project
+INFO: [HLS 200-10] Opening solution '/home/uma/Desktop/graduation_project/finn_hlslib/finn-hlslib/hls-syn-pe/sol1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 5ns.
+INFO: [HLS 200-10] Setting target device to 'xczu3eg-sbva484-1-i'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../pe_tb.cpp in debug mode
+   Compiling ../../../../pe_top.cpp in debug mode
+   Generating csim.exe
+../../../../pe_tb.cpp: In instantiation of ‘void sw_mult_mm(ap_uint<4>, ap_uint<4>, ap_uint<8>&) [with IN_TYPE = ap_uint<1>; WGT_TYPE = ap_uint<1>]’:
+../../../../pe_tb.cpp:73:53:   required from here
+../../../../pe_tb.cpp:36:33: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+              sub_tot += sub_inp * sub_wgt;
+                         ~~~~~~~~^~~~~~~~~
+In file included from /home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int.h:55:0,
+                 from ../../../../pe_tb.cpp:8:
+/home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int_base.h:1340:7: note: candidate 1: typename ap_int_base<_AP_W, _AP_S>::RType<_AP_W2, _AP_S2>::mult operator*(const ap_int_base<_AP_W2, _AP_S2>&, const ap_int_base<_AP_W3, _AP_S3>&) [with int _AP_W = 1; bool _AP_S = false; int _AP_W2 = 1; bool _AP_S2 = false; typename ap_int_base<_AP_W, _AP_S>::RType<_AP_W2, _AP_S2>::mult = ap_uint<2>]
+       operator Sym(const ap_int_base<_AP_W, _AP_S>& op,                       \
+       ^
+/home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int_base.h:1352:1: note: in expansion of macro ‘OP_BIN_AP’
+ OP_BIN_AP(*, mult)
+ ^~~~~~~~~
+In file included from ../../../../slidingwindow.h:50:0,
+                 from ../../../../bnn-library.h:61,
+                 from ../../../../pe_tb.cpp:10:
+../../../../interpret.hpp:95:12: note: candidate 2: int operator*(const T&, const Binary&) [with T = ap_uint<1>]
+ inline int operator*(T const &a, Binary const &b) {
+            ^~~~~~~~
+../../../../pe_tb.cpp:36:33: warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+              sub_tot += sub_inp * sub_wgt;
+                         ~~~~~~~~^~~~~~~~~
+In file included from /home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int.h:55:0,
+                 from ../../../../pe_tb.cpp:8:
+/home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int_base.h:1340:7: note: candidate 1: typename ap_int_base<_AP_W, _AP_S>::RType<_AP_W2, _AP_S2>::mult operator*(const ap_int_base<_AP_W2, _AP_S2>&, const ap_int_base<_AP_W3, _AP_S3>&) [with int _AP_W = 1; bool _AP_S = false; int _AP_W2 = 1; bool _AP_S2 = false; typename ap_int_base<_AP_W, _AP_S>::RType<_AP_W2, _AP_S2>::mult = ap_uint<2>]
+       operator Sym(const ap_int_base<_AP_W, _AP_S>& op,                       \
+       ^
+/home/uma/Desktop/Xilinx/Vivado/2020.1/include/ap_int_base.h:1352:1: note: in expansion of macro ‘OP_BIN_AP’
+ OP_BIN_AP(*, mult)
+ ^~~~~~~~~
+In file included from ../../../../slidingwindow.h:50:0,
+                 from ../../../../bnn-library.h:61,
+                 from ../../../../pe_tb.cpp:10:
+../../../../interpret.hpp:70:12: note: candidate 2: int operator*(const ap_uint<1>&, const XnorMul&)
+ inline int operator*(ap_uint<1> const &a, XnorMul const &b) {
+            ^~~~~~~~
+input value	7	wgt_value	6
+i	0	sub_inp	1	sub_wgt	0	subtotal 	0
+i	1	sub_inp	1	sub_wgt	1	subtotal 	1
+1 
+total	1	state	0
+input value	9	wgt_value	3
+i	0	sub_inp	1	sub_wgt	1	subtotal 	1
+i	1	sub_inp	0	sub_wgt	0	subtotal 	1
+1 
+total	2	state	1
+input value	1	wgt_value	15
+i	0	sub_inp	1	sub_wgt	1	subtotal 	1
+i	1	sub_inp	0	sub_wgt	1	subtotal 	1
+1 
+total	3	state	2
+input value	10	wgt_value	12
+i	0	sub_inp	0	sub_wgt	0	subtotal 	0
+i	1	sub_inp	0	sub_wgt	1	subtotal 	0
+0 
+total	3	state	3
+input value	9	wgt_value	13
+i	0	sub_inp	1	sub_wgt	1	subtotal 	1
+i	1	sub_inp	0	sub_wgt	1	subtotal 	1
+1 
+total	4	state	4
+input value	10	wgt_value	11
+i	0	sub_inp	0	sub_wgt	1	subtotal 	0
+i	1	sub_inp	0	sub_wgt	0	subtotal 	0
+0 
+total	4	state	5
+input value	2	wgt_value	11
+i	0	sub_inp	0	sub_wgt	1	subtotal 	0
+i	1	sub_inp	0	sub_wgt	0	subtotal 	0
+0 
+total	4	state	6
+input value	3	wgt_value	6
+i	0	sub_inp	1	sub_wgt	0	subtotal 	0
+i	1	sub_inp	0	sub_wgt	1	subtotal 	0
+0 
+total	4	state	7
+-----------------------total is------------4
+
+ERROR with counter 0 expected 0x4 value 0x10
+@E Simulation failed: Function 'main' returns nonzero value '1'.
+ERROR: [SIM 211-100] 'csim_design' failed: nonzero return value.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+4
+    while executing
+"source test_pe.tcl"
+    invoked from within
+"hls::main test_pe.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$args"
+    (procedure "hls_proc" line 5)
+    invoked from within
+"hls_proc $argv"
+INFO: [Common 17-206] Exiting vivado_hls at Thu Jan 21 11:52:37 2021...

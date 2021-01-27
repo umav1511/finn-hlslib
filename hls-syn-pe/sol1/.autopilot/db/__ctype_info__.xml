@@ -1,0 +1,43 @@
+<InterfaceSummary>
+<RtlPorts>
+<name>in_V_V</name>
+<CType>
+<TypeName>ap_uint 4</TypeName>
+<TypeWidth>4</TypeWidth>
+<PhysicalWidth>4</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>out_V_V</name>
+<CType>
+<TypeName>ap_uint 8</TypeName>
+<TypeWidth>8</TypeWidth>
+<PhysicalWidth>8</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>weights_V_V</name>
+<CType>
+<TypeName>ap_uint 4</TypeName>
+<TypeWidth>4</TypeWidth>
+<PhysicalWidth>4</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+<RtlPorts>
+<name>reps</name>
+<CType>
+<TypeName>int</TypeName>
+<TypeWidth>32</TypeWidth>
+<PhysicalWidth>32</PhysicalWidth>
+</CType>
+<CFractionWidth>0</CFractionWidth>
+<InvalidType>0</InvalidType>
+</RtlPorts>
+</InterfaceSummary>
+

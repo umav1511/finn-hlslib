@@ -1,0 +1,29 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <config>
+        <schedule model="testbench_pe"/>
+    </config>
+    <Simulation argv="">
+        <SimFlow name="cosim" setup="false" dumpTrace="none" optimizeCompile="false" ldflags="" mflags="" compiledLibrary="" reduce_diskspace="false" toolName="auto">
+            <Rtl name="systemc" active="false"/>
+            <Rtl name="verilog" active="true"/>
+            <Rtl name="vhdl" active="false"/>
+        </SimFlow>
+    </Simulation>
+    <name>
+        <value string="sol1"/>
+    </name>
+    <project>
+        <value string="hls-syn-pe"/>
+    </project>
+    <targetInfo>
+        <TargetInfo value="xczu3eg:-sbva484:-1-i"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/zynquplus/zynquplus" name="DefaultPlatform"/>
+        <library value="xilinx/zynquplus/zynquplus_fpv7" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock name="default" default="false" period="5"/>
+    </clockList>
+</AutoPilot:solution>
+
