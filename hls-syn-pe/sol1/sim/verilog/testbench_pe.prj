@@ -1,8 +1,0 @@
-sv work "glbl.v"
-sv xil_defaultlib "AESL_autofifo_weights_V_V.v"
-sv xil_defaultlib "testbench_pe.autotb.v"
-sv xil_defaultlib "AESL_autofifo_out_V_V.v"
-sv xil_defaultlib "AESL_autofifo_in_V_V.v"
-sv xil_defaultlib "testbench_pe_mul_bkb.v"
-sv xil_defaultlib "testbench_pe.v"
-
