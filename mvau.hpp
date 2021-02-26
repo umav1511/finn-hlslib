@@ -365,7 +365,7 @@ void Matrix_Vector_PE_Batch(
                 wgt = weights.read();
                 w.m_weights[0] = wgt;
                 //wgt = W_packed & (((ap_uint<1+TW::width>)1 << (TW::width)) - 1);
-                auto const  wgt_format = TWeightI()(w[0]);
+                //auto const  wgt_format = TWeightI()(w[0]);
                 auto const  act = TSrcI()(inElem, 0);
                 //std::cout<<"For sf= "<<sf<<" Upacked weights 0 is: "<<std::hex<<wgt_format[0]<<"\n";
                 //std::cout<<"For sf= "<<sf<<" Upacked weights 1 is: "<<std::hex<<wgt_format[1]<<"\n";
@@ -375,7 +375,7 @@ void Matrix_Vector_PE_Batch(
                 //std::cout<<"For sf= "<<sf<<" Upacked in 2 is: "<<std::hex<<act[2]<<"\n";
                 //temp = accu.to_float();
                 //std::cout<<" Accu before: "<<temp<<"\n";
-                accu = mac<SIMD>(accu, wgt_format, act, r,0);
+                accu = mac<SIMD>(accu, TWeightI()(w[0]), act, r,0);
                 //temp = accu.to_float();
                 //std::cout<<" Accu after: "<<temp<<"\n";
                 // keep track of which folded synapse/neuron we are processing
