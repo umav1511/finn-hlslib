@@ -158,6 +158,7 @@ class Weights_Tile {
   std::array<WT,SIMD> operator[](unsigned const  pe) const {
     #pragma HLS inline
     std::array<WT,SIMD> temp;
+    #pragma HLS ARRAY_PARTITION variable=temp complete dim=0
     for(unsigned int i=0; i<SIMD; i++) {
       #pragma HLS unroll
       ap_int<WT::width> local_temp;
