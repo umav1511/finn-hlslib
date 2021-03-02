@@ -49,7 +49,7 @@
 #define SLIDINGWINDOW_H
  
 #include "utils.hpp"
-
+#include "interpret.hpp"
 #define MAX(x, y) (((x) > (y)) ? (x) : (y)) /* \brief Maximum value between x and y*/
 #define MIN(x, y) (((x) > (y)) ? (y) : (x)) /* !< \brief Minimum value between x and y*/
 /**
@@ -1165,4 +1165,75 @@ void ConvolutionInputGenerator_NonSquare_dws(
 	read_block = 0;
   } // End count_image
 } // End generator
+
+/**
+ * \brief Store and broadcast input data
+ *
+ * Read input data, store it into inputBuf (useful in case neuron fold>0). Forward data to the MVAU in the correct order.
+ * This module is required in case of a design with separate PEs, in order to distribute the same input information to all of them
+ *
+ * \tparam MatrixW    		Width of the input matrix
+ * \tparam MatrixH    		Heigth of the input matrix
+ * \tparam SIMD      		L0_SIMD    from config.h file. Number of SIMD lanes
+ * \tparam PE      			L0_PE 	   from config.h file. Number of PEs.
+ * \tparam TSrcI   			DataType of the input activation (as used in the MAC)
+ */
+template<
+		unsigned int 	MatrixW,		
+		unsigned int 	MatrixH,		
+
+		unsigned int 	SIMD, 				// L0_SIMD    from config.h file. Number of SIMD lanes
+		unsigned int 	PE,					// L0_PE 	  from config.h file. Number of PEs.
+		typename 		TSrcI = Identity    // redefine I/O interpretation as needed for input activations
+		>
+
+
+void InputBuffer(
+				hls::stream<ap_uint<SIMD*TSrcI::width>> &in,		// Stream coming from the Sliding Window
+				hls::stream<ap_uint<SIMD*TSrcI::width>> &out,		// Stream going into the MVAU
+				unsigned const   reps) {
+
+	// how many different rows each neuron will compute
+    // alternatively: number of vertical matrix chunks
+    unsigned const  NF = MatrixH / PE;
+
+    // how many synapse groups each row is split into
+    // alternatively: number of horizontal matrix chunks
+    unsigned const  SF = MatrixW / SIMD;
+
+	// Input vector buffers
+    ap_uint<SIMD*TSrcI::width>  inputBuf[SF];
+
+	// temporary value used to store the read data in the buffer and also to write it to the output buffer
+    ap_uint<SIMD*TSrcI::width>  tempRead;
+
+	unsigned  nf   = 0;
+	unsigned  sf   = 0;
+
+
+	unsigned const TOTAL_FOLD = NF * SF;
+	for(unsigned  i = 0; i < reps * TOTAL_FOLD; i++) {
+		#pragma HLS PIPELINE II=1
+		if(nf == 0) {
+			// Read input from stream
+			tempRead = in.read();
+			inputBuf[sf] = tempRead;
+			out.write(tempRead);
+		}
+		else {
+			// reuse buffered input
+			out.write(inputBuf[sf]);
+		}
+
+		if(++sf == SF) {
+			// next folded neuron or image
+			sf = 0;
+			if(++nf == NF) {
+				nf   = 0;
+			}
+
+		}
+
+	}
+}
 #endif
