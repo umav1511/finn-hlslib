@@ -265,4 +265,5 @@ void Vector_Vector_Activate_Stream_Batch(hls::stream<TI> &in,
     }
   }
 }
+
 #endif
